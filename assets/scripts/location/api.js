@@ -20,13 +20,7 @@ const createLocation = function (data) {
     // headers: {
     //   Authorization: 'Token token=' + store.user.token
     // },
-    data: {
-      location: {
-        // user_id: store.user.id,
-        country: store.country,
-        city: store.city
-      }
-    }
+    data: data
   })
 }
 
@@ -35,7 +29,7 @@ const showLocations = function (id) {
     url: config.apiUrl + '/locations/' + store.location.id,
     method: 'GET'
     // headers: {
-    //   authorization: 'Token token=' + store.user.token
+    //   Authorization: 'Token token=' + store.user.token
     // }
   })
 }

@@ -17,6 +17,7 @@ const onCreateLocation = event => {
   console.log('onCreateLocation ran!')
 
   const data = getFormFields(event.target)
+  console.log(data)
   api.createLocation(data)
     .then(ui.onCreateSuccess)
     .catch(ui.onCreateFailure)
@@ -85,7 +86,7 @@ const onDeleteLocation = function (event) {
 const addHandlers = () => {
   $('#index-locations').on('click', onIndexLocations)
 
-  $('#create-location').on('click', onCreateLocation)
+  $('#create-location').on('submit', onCreateLocation)
   $('#show-locations').on('click', onShowLocations)
   $('#delete-location').on('click', onDeleteLocation)
   // $('#update-location').on('click', onUpdateLocation)
