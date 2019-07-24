@@ -8,7 +8,7 @@ const indexLocations = function () {
     url: config.apiUrl + '/locations',
     method: 'GET'
     // headers: {
-    //   authorization: 'Token token=' + store.user.token
+    //   Authorization: 'Token token=' + store.user.token
     // }
   })
 }
@@ -22,7 +22,7 @@ const createLocation = function (data) {
     // },
     data: {
       location: {
-        user_id: store.user.id,
+        // user_id: store.user.id,
         country: store.country,
         city: store.city
       }
@@ -33,10 +33,10 @@ const createLocation = function (data) {
 const showLocations = function (id) {
   return $.ajax({
     url: config.apiUrl + '/locations/' + store.location.id,
-    method: 'GET',
-    headers: {
-      authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
+    // headers: {
+    //   authorization: 'Token token=' + store.user.token
+    // }
   })
 }
 
