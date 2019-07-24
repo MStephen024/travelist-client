@@ -11,12 +11,8 @@ const locationEvents = require('./location/events')
 
 $(() => {
   // Auth
-  $('#sign-up').on('submit', authEvents.onSignUp)
-  $('#sign-in').on('submit', authEvents.onSignIn)
-  $('#change-password').on('submit', authEvents.onChangePassword)
-  $('#sign-out').on('submit', authEvents.onSignOut)
+  authEvents.addHandlers()
 
   // Locations
-  $('#create-location').on('click', locationEvents.onStartLocation)
-  $('#index-locations').on('click', locationEvents.onGetLocations)
+  locationEvents.addHandlers()
 })

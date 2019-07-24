@@ -3,19 +3,36 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const indexLocation = function (id) {
+const indexLocations = function () {
   return $.ajax({
     url: config.apiUrl + '/locations',
-    method: 'GET',
-    headers: {
-      authorization: 'Token token=' + store.user.token
+    method: 'GET'
+    // headers: {
+    //   authorization: 'Token token=' + store.user.token
+    // }
+  })
+}
+
+const createLocation = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/locations',
+    method: 'POST',
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // },
+    data: {
+      location: {
+        user_id: store.user.id,
+        country: store.country,
+        city: store.city
+      }
     }
   })
 }
 
-const showLocation = function (id) {
+const showLocations = function (id) {
   return $.ajax({
-    url: config.apiUrl + '/locations/' + store.game.id,
+    url: config.apiUrl + '/locations/' + store.location.id,
     method: 'GET',
     headers: {
       authorization: 'Token token=' + store.user.token
@@ -38,21 +55,10 @@ const updateLocation = function (data) {
   })
 }
 
-const createLocation = function (data) {
-  return $.ajax({
-    url: config.apiUrl + '/locations',
-    method: 'POST',
-    data: {},
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
-
 module.exports = {
-  indexLocation,
-  showLocation,
+  indexLocations,
+  createLocation,
+  showLocations,
   destroyLocation,
-  updateLocation,
-  createLocation
+  updateLocation
 }
