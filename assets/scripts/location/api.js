@@ -36,9 +36,10 @@ const showLocations = function (id) {
   })
 }
 
-const destroyLocation = function (id) {
+const destroyLocation = (locationId) => {
+  console.log('the errror is here')
   return $.ajax({
-    url: config.apiUrl + '/locations/' + id,
+    url: config.apiUrl + '/locations/' + locationId,
     method: 'DELETE'
   })
 }

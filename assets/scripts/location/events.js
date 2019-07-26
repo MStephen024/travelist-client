@@ -41,55 +41,44 @@ const onShowLocations = event => {
   }
 }
 
-const onDeleteLocation = function (event) {
+const onDeleteLocation = event => {
   event.preventDefault()
-  console.log('onDeleteLocation ran!')
+  const bookId = $(event.target).closest('section').data('id')
+  api.destroyLocation(bookId)
+    .then(ui.onDestroySuccess)
+    .catch(ui.onDestroyFailure)
+}
+
+const onUpdateLocation = function (event) {
+  event.preventDefault()
+  console.log('onUpdateLocation ran!')
 
   const data = getFormFields(event.target)
   const location = data.location
 
+  if (location.text === '') {
+    $('#message').html('<p>Text is required</p>')
+    $('#message').css('background-color', 'red')
+    console.log('Text is required!')
+    return false
+  }
   if (location.id.length !== 0) {
-    api.destroyLocation(location.id)
-      .then(ui.onDeleteSuccess)
-      .catch(ui.onDeleteFailure)
+    api.updateLocation(data)
+      .then(ui.onUpdateSuccess)
+      .catch(ui.onUpdateFailure)
   } else {
     $('#message').html('<p>Please provide an location id!</p>')
     $('#message').css('background-color', 'red')
     console.log('Please provide an location id!')
   }
 }
-//
-// const onUpdateLocation = function (event) {
-//   event.preventDefault()
-//   console.log('onUpdateLocation ran!')
-//
-//   const data = getFormFields(event.target)
-//   const location = data.location
-//
-//   if (location.text === '') {
-//     $('#message').html('<p>Text is required</p>')
-//     $('#message').css('background-color', 'red')
-//     console.log('Text is required!')
-//     return false
-//   }
-//   if (location.id.length !== 0) {
-//     api.updateLocation(data)
-//       .then(ui.onUpdateSuccess)
-//       .catch(ui.onUpdateFailure)
-//   } else {
-//     $('#message').html('<p>Please provide an location id!</p>')
-//     $('#message').css('background-color', 'red')
-//     console.log('Please provide an location id!')
-//   }
-// }
 
 const addHandlers = () => {
   $('#index-locations').on('click', onIndexLocations)
-
   $('#create-location').on('submit', onCreateLocation)
   $('#show-locations').on('click', onShowLocations)
   $('#delete-location').on('click', onDeleteLocation)
-  // $('#update-location').on('click', onUpdateLocation)
+  $('#update-location').on('click', onUpdateLocation)
 }
 
 module.exports = {

@@ -1,5 +1,7 @@
 'use strict'
 
+const locationsTemplate = require('../templates/locations.handlebars')
+
 const onCreateSuccess = function (data) {
   $('#message').text('Location successfully created')
   $('#message').removeClass()
@@ -18,6 +20,16 @@ const onIndexSuccess = function (data) {
   $('#message').text('All Location successfully received')
   $('#message').removeClass('failure')
   $('#message').addClass('success')
+
+  // 2. Use the template file as a function
+  // 3. Pass the template file an object as an argument
+  // 4. Will return an interpolated HTML string
+  const locationsHtml = locationsTemplate({
+    locations: data.locations })
+  // 5. Insert HTML string onto the page using jQuery
+  // use .append or .html
+  $('.content').html(locationsHtml)
+
   console.log('onIndexSuccess ran. Data is :', data.locations)
 }
 
@@ -46,6 +58,7 @@ const onDestroySuccess = function () {
   $('#message').text('Location successfully deleted')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('.content').empty()
   console.log('Example successfully deleted')
 }
 

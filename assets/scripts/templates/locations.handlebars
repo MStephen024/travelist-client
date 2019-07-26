@@ -1,0 +1,21 @@
+{{#each locations as |location|}}
+ <section data-id="{{location.id}}">
+
+   <form class="hide" data-id="{{location.id}}">
+     <h2>Index Location</h2>
+     <div class="card" style="width: 18rem;">
+       <img class="card-img-top" src="https://i.imgur.com/mY4wWB9.jpg" alt="Card image cap">
+       <div class="card-body">
+         <h5 class="card-title">{{location.city}}</h5>
+         <p class="card-text">{{location.attraction}}
+         <a id="update-location" class="btn btn-primary">Edit</a>
+         <a id="delete-location" class="btn btn-primary">Delete</a>
+       </div>
+     </div>
+     <button id="index-locations" class="btn-primary">Locations</button>
+   </form>
+
+   <!-- {{> partial location}} -->
+ </section>
+
+{{/each}}

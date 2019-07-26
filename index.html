@@ -56,16 +56,22 @@
           <button  class="btn-primary">Create Location</button>
         </form>
 
-        <form id="index-locations" class="hide">
+        <form class="hide">
           <h2>Index Location</h2>
-          <input type="text" name="location[country]" placeholder="Enter Country">
-          <input type="text" name="location[city]" placeholder="Enter City">
-          <!-- <input type="text" name="attraction" placeholder="Enter Attraction">
-          <input type="text" name="cuisine" placeholder="Enter Country">
-          <input type="text" name="description" placeholder="Enter Country"> -->
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://i.imgur.com/mY4wWB9.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a id="update-location" class="btn btn-primary">Edit</a>
+              <a href="#" class="btn btn-primary">Save</a>
+              <a id="delete-location" data-id="0" class="btn btn-primary">Delete</a>
+            </div>
+          </div>
           <button id="index-locations" class="btn-primary">Index Locations</button>
         </form>
 
+        <div class="content"></div>
       </div>
     </body>
 </html>
